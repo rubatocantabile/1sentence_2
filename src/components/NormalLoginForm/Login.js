@@ -2,7 +2,8 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 // import './index.css';
-import { Layout,Form, Icon, Input, Button } from 'antd';
+import { Layout, Form, Icon, Input, Button } from 'antd';
+import { Link } from 'react-router-dom'
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
@@ -46,7 +47,10 @@ class NormalLoginForm extends React.Component {
               <Button type="primary" htmlType="submit" className="login-form-button">
                 로그인
               </Button>
-              {/* <a href="">회원가입</a> */}
+              <div className="">
+                <Link to="">회원가입</Link>
+                <Link to="">비밀번호 찾기</Link>
+              </div>
             </Form.Item>
           </Form>
         </section>

@@ -2,22 +2,22 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css'; 
 import './App.css';
 import Home from './components/Home/Home'
+import Write from './components/Write/Write';
 import { Route, Switch, Link } from 'react-router-dom'
 import NormalLoginForm from './components/NormalLoginForm/Login';
 import { Button, Layout } from 'antd'
-
-// const { Header, Footer, Sider } = Layout;
+import Read from './components/Read/Read';
 
 export default class App extends Component {
-
-
   render () {
     return (
       <>
-       <Layout>
+        <Layout>
           <section className="Content-section-layout">
             <Switch>
               <Route path="/" component={Home} />
+              <Route path="/write" component={Write} />
+              {/* <Route path="/read" component={Read} /> */}
               <Route path="/login" component={NormalLoginForm} />
               <Route render={(_) => (
                   <div className="App-section-layout2">

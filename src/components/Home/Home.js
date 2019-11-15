@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import { Layout, Menu, Icon } from 'antd';
 import './Home.css'
@@ -33,20 +34,24 @@ class Home extends Component {
             }}
           >
             <div className="logo" />
-            <Menu theme="light" mode="inline" defaultSelectedKeys={['4']}>
+            <Menu theme="light" mode="inline">
               <Menu.Item key="1">
-                <Icon type="edit" />
-                <span className="nav-text">쓰기</span>
+                <Link to="">
+                  <Icon type="edit" />
+                  <span className="nav-text">쓰기</span>
+                </Link>
               </Menu.Item>
               <Menu.Item key="2">
                 <Icon type="read" />
                 <span className="nav-text">읽기</span>
               </Menu.Item>
               <Menu.Item key="3">
-                <Icon type="search" />
-                <span className="nav-text">찾기</span>
+                <Link to="">
+                  <Icon type="search" />
+                  <span className="nav-text">찾기</span>
+                </Link>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item key="4">
                 <Icon type="login" />
                 <span className="nav-text">로그인</span>
               </Menu.Item>
@@ -58,7 +63,11 @@ class Home extends Component {
             </Header>
             <section className="Content-section-layout">
               <Content style={{ margin: '24px 16px 0' }}>
-                <div style={{ padding: 24, background: '#fff', minHeight: 600 }}>content</div>
+                <div style={{ padding: 24, background: '#fff', minHeight: 600 }}>
+                  <span>오늘은 어떤 하루였나요?</span><br/>
+                  <span>당신의 이야기를 한줄로 정리해드립니다.</span><br/>
+                  <span>...1sentence...</span>
+               </div>
               </Content>
             </section>
             <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>

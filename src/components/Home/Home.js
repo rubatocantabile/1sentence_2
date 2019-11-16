@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import { Layout, Menu, Icon, DatePicker } from 'antd';
 import './Home.css'
+import axios from 'axios';
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -11,13 +13,33 @@ class Home extends Component {
   constructor(props) {
     super(props)
      this.state = {
-      collapsed: false
-    }  
+      collapsed: false,
+      text: ""
+    }
+
+    this.onChange = this.onChange.bind(this)
+    this.flask = this.flask.bind(this)
   }
 
   onCollapse = (collapsed) => {
     console.log(collapsed);
     this.setState({ collapsed });
+  }
+
+  onChange(event) {
+    this.setState({
+      text: event.target.value
+    })
+  }
+   
+  flask(event) {
+    axios.post("http://15.164.222.171:8080/summary", {
+      text: [this.state.text]
+    })
+    .then((response) => {
+      console.log(response.data)
+      alert(response.data.onesentence)
+    })
   }
   
   render() {
@@ -37,7 +59,7 @@ class Home extends Component {
             <div className="logo" />
             <Menu theme="light" mode="inline">
               <Menu.Item key="1">
-                <Link to="">
+                <Link to="/write">
                   <Icon type="edit" />
                   <span className="nav-text">쓰기</span>
                 </Link>
@@ -63,8 +85,10 @@ class Home extends Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="4">
-                <Icon type="login" />
-                <span className="nav-text">로그인</span>
+                <Link to="/login">
+                  <Icon type="login" />
+                  <span className="nav-text">로그인</span>
+                </Link>
               </Menu.Item>
             </Menu>
           </Sider>
@@ -75,10 +99,12 @@ class Home extends Component {
             <section className="Content-section-layout">
               <Content style={{ margin: '24px 16px 0' }}>
                 <div style={{ padding: 24, background: '#fff', minHeight: 600 }}>
+                  <input type="textarea" style={{width: "300"}} value={this.state.text} onChange={this.onChange} />
                   <span>오늘은 어떤 하루였나요?</span><br/>
                   <span>당신의 이야기를 한줄로 정리해드립니다.</span><br/>
                   <span>...1sentence...</span>
                </div>
+               <button onClick={this.flask}>저장</button>
               </Content>
             </section>
             <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>

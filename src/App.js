@@ -15,7 +15,7 @@ export default class App extends Component {
         <Layout>
           <section className="Content-section-layout">
             <Switch>
-              <Route path="/" component={Home} />
+              <Route exact path="/" component={Home} />
               <Route path="/write" component={Write} />
               {/* <Route path="/read" component={Read} /> */}
               <Route path="/login" component={NormalLoginForm} />

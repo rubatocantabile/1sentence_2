@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, DatePicker } from 'antd';
 import './Home.css'
 const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
 
 
 class Home extends Component {
@@ -40,11 +41,21 @@ class Home extends Component {
                   <Icon type="edit" />
                   <span className="nav-text">쓰기</span>
                 </Link>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="read" />
-                <span className="nav-text">읽기</span>
-              </Menu.Item>
+              </Menu.Item>              
+              <SubMenu
+                key="Sub1"
+                title={
+                  <span>
+                    <Icon type="read" />
+                    <span>읽기</span>
+                  </span>
+                }
+              >
+                <Menu.Item key="2">
+                  <DatePicker />
+                <span className="nav-text"></span>
+                </Menu.Item>
+              </SubMenu>
               <Menu.Item key="3">
                 <Link to="">
                   <Icon type="search" />
